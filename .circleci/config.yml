@@ -29,7 +29,7 @@ jobs:
       - deploy:
           name: Deploy
           command: |
-            git push heroku sequential-branch-filter:master
+            
 
            
            
@@ -43,5 +43,5 @@ workflows:
             - build
           filters:
             branches:
-              only: sequential-branch-filter
+              only: master
 
