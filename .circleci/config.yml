@@ -8,4 +8,42 @@ jobs:
       - run:
          name: Run Lora GWlib
          command: |
+           echo 'start to build Lora Gateway'
            make all
+           
+      - run:
+         name: Run Lora GWlib
+         command: |
+           mkdir -p output
+           cp -a libloragw ./output/
+           cp -a util_pkt_logger ./output/
+           cp -a util_spi_stress ./output/
+           cp -a util_tx_test ./output/
+           cp -a util_lbt_test ./output/
+           cp -a util_tx_continuous ./output/
+           cp -a util_spectral_scan ./output/
+
+      - store_artifacts:
+          path: /home/circleci/project/output
+
+      - deploy:
+          name: Deploy
+          command: |
+            if [ "$CIRCLE_TAG" != "" ]; then
+              curl -sSL https://github.com/tcnksm/ghr/releases/download/v0.5.4/ghr_v0.5.4_linux_amd64.zip -o ghr.zip
+              unzip ghr.zip
+              if [[ $CIRCLE_TAG = *"rc"* ]]; then
+                pre=-prerelease
+              fi
+              ./ghr $pre -u hypriot $CIRCLE_TAG output/
+            fi
+           
+           
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build:
+          filters:
+            tags:
+                only: /.*/
