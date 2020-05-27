@@ -1,8 +1,7 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: cibuilds/github:0.10
+    machine: true
     steps:
       - checkout
 
@@ -28,7 +27,7 @@ jobs:
            echo "FILE: $FILE_LIST "
            
       - store_artifacts:
-          path: /home/circleci/project/artifacts
+          path: ./artifacts
 
   publish-github-release:
     docker:
