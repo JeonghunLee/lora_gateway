@@ -15,13 +15,13 @@ jobs:
          name: Copy Lora GWlib to Output
          command: |
            mkdir -p output
-           cp -a libloragw ./output/
-           cp -a util_pkt_logger ./output/
-           cp -a util_spi_stress ./output/
-           cp -a util_tx_test ./output/
-           cp -a util_lbt_test ./output/
-           cp -a util_tx_continuous ./output/
-           cp -a util_spectral_scan ./output/
+           cp -a libloragw.a ./output/
+           cp -a util_pkt_logger/util_pkt_logger ./output/
+           cp -a util_spi_stress/util_spi_stress ./output/
+           cp -a util_tx_test/util_tx_test ./output/
+           cp -a util_lbt_test/util_lbt_test ./output/
+           cp -a util_tx_continuous/util_tx_continuous ./output/
+           cp -a util_spectral_scan/util_spectral_scan ./output/
            cp -a ./output ./artifacts
       - store_artifacts:
           path: /home/circleci/project/artifacts
@@ -36,13 +36,13 @@ jobs:
           name: "Publish Release on GitHub"
           command: |
             go version
-            echo " GET ghr ok"
+            echo " STEP1 GET ghr ok"
             go get github.com/tcnksm/ghr
-            echo " EXEC ghr ok"
+            echo " STEP2 EXEC ghr ok"
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} v5.0 ./artifacts/
-            echo " ghr TEST ok "
+            echo " STEP3 EXEC ls ok "
             ls ./artifacts/
-            echo " ls TEST ok"
+            echo " STEP4 ls ok"
             
             
             
