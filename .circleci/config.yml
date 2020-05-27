@@ -48,7 +48,7 @@ jobs:
             echo " STEP2 EXEC ls " 
             FILE_LIST=`ls ./artifacts/`
             echo " STEP3 FILE: $FILE_LIST " 
-            FILE_LIST=`ls /tmp/112233`
+            FILE_LIST=`ls /tmp/112233/output/`
             echo " STEP3 FILE: $FILE_LIST "             
             pwd       
             echo " STEP4 EXEC ghr "
