@@ -15,7 +15,7 @@ jobs:
          name: Copy Lora GWlib to Output
          command: |
            mkdir -p output
-           cp -a libloragw.a ./output/
+           cp -a libloragw/libloragw.a ./output/
            cp -a util_pkt_logger/util_pkt_logger ./output/
            cp -a util_spi_stress/util_spi_stress ./output/
            cp -a util_tx_test/util_tx_test ./output/
