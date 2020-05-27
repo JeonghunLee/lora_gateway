@@ -39,14 +39,12 @@ jobs:
             echo " STEP1 GET ghr ok"
             go get github.com/tcnksm/ghr
             echo " STEP2 EXEC ls " 
-            ls ./artifacts/
-            echo " STEP3 EXEC ls " 
-            pwd 
-            echo " STEP4 EXEC ls " 
-            ls /home/circleci/project/artifacts/
-            echo " STEP3 EXEC ghr "
+            FILE_LIST=`ls ./artifacts/`
+            echo " STEP3 FILE: $FILE_LIST " 
+            pwd       
+            echo " STEP4 EXEC ghr "
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} v5.0 ./artifacts
-            echo " STEP4 WORKING OK "
+            echo " STEP5 WORKING OK "
 
             
             
