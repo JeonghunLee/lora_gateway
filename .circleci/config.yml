@@ -26,10 +26,15 @@ jobs:
       - store_artifacts:
           path: /home/circleci/project/output
 
+
+
       - deploy:
           name: Deploy To Archive
+          name: "Publish Release on GitHub"
           command: |
-            cp -a libloragw ./output/
+            go get github.com/tcnksm/ghr
+            VERSION=$(my-binary --version)
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./artifacts/
 
            
            
