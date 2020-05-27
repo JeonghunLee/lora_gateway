@@ -6,13 +6,13 @@ jobs:
       - checkout
 
       - run:
-         name: Run Lora GWlib
+         name: Make All Lora GWlib
          command: |
            echo 'start to build Lora Gateway'
            make all
            
       - run:
-         name: Run Lora GWlib
+         name: Copy Lora GWlib to Output
          command: |
            mkdir -p output
            cp -a libloragw ./output/
@@ -27,7 +27,7 @@ jobs:
           path: /home/circleci/project/output
 
       - deploy:
-          name: Deploy
+          name: Deploy To Archive
           command: |
             cp -a libloragw ./output/
 
