@@ -26,22 +26,18 @@ jobs:
       - store_artifacts:
           path: /home/circleci/project/output
 
-
   
   publish-github-release:
     docker:
-      - image: circleci/golang:1.8
+      - image: cibuilds/github:0.10
     steps:
       - attach_workspace:
           at: ./artifacts
       - run:
           name: "Publish Release on GitHub"
           command: |
-            go version 
-            go get github.com/tcnksm/ghr
             VERSION=$(my-binary --version)
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./artifacts/
-           
            
 workflows:
   version: 2
