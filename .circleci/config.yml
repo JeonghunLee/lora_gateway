@@ -29,6 +29,9 @@ jobs:
       - store_artifacts:
           path: ./artifacts
 
+      - attach_workspace:
+          at: ./artifacts
+
   publish-github-release:
     docker:
       - image: cibuilds/github:0.10
