@@ -24,7 +24,7 @@ jobs:
            cp -a util_spectral_scan ./output/
            cp -a ./output ./artifacts
       - store_artifacts:
-          path: /home/circleci/project/output
+          path: /home/circleci/project/artifacts
 
   
   publish-github-release:
