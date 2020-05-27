@@ -28,8 +28,7 @@ jobs:
 
 
 
-      - deploy:
-          name: Deploy To Archive
+      - deploy:          
           name: "Publish Release on GitHub"
           command: |
             go get github.com/tcnksm/ghr
