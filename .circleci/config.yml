@@ -23,15 +23,19 @@ jobs:
            cp -a util_tx_continuous/util_tx_continuous ./output/
            cp -a util_spectral_scan/util_spectral_scan ./output/
            cp -a ./output ./artifacts
+           mkdir -p /tmp/112233/output
+           cp -a ./output /tmp/112233/output
            FILE_LIST=`ls ./artifacts/`
            echo "FILE: $FILE_LIST "
            
       - store_artifacts:
           path: ./artifacts
-
-      - attach_workspace:
-          at: ./artifacts
-
+          
+      - persist_to_workspace:
+          root: /tmp/112233
+          paths:
+             - output             
+     
   publish-github-release:
     docker:
       - image: cibuilds/github:0.10
@@ -44,6 +48,8 @@ jobs:
             echo " STEP2 EXEC ls " 
             FILE_LIST=`ls ./artifacts/`
             echo " STEP3 FILE: $FILE_LIST " 
+            FILE_LIST=`ls /tmp/112233`
+            echo " STEP3 FILE: $FILE_LIST "             
             pwd       
             echo " STEP4 EXEC ghr "
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} v5.0 ./artifacts
