@@ -38,11 +38,12 @@ jobs:
             go version
             echo " STEP1 GET ghr ok"
             go get github.com/tcnksm/ghr
-            echo " STEP2 EXEC ghr ok"
+            echo " STEP2 EXEC ls " 
+            ls ./artifacts/            
+            echo " STEP3 EXEC ghr "
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} v5.0 ./artifacts
-            echo " STEP3 EXEC ls ok "
-            ls ./artifacts/
-            echo " STEP4 ls ok"
+            echo " STEP4 WORKING OK "
+
             
             
             
