@@ -37,7 +37,7 @@ jobs:
           command: |
             go version
             go get github.com/tcnksm/ghr
-            VERSION=$(my-binary --version)
+            VERSION=v5.0
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./artifacts/
             
             
