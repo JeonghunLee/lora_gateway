@@ -23,6 +23,9 @@ jobs:
            cp -a util_tx_continuous/util_tx_continuous ./output/
            cp -a util_spectral_scan/util_spectral_scan ./output/
            cp -a ./output ./artifacts
+           FILE_LIST=`ls ./artifacts/`
+           echo "FILE: $FILE_LIST "
+           
       - store_artifacts:
           path: /home/circleci/project/artifacts
 
