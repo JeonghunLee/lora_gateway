@@ -36,7 +36,9 @@ jobs:
           name: "Publish Release on GitHub"
           command: |
             go version
+            echo " GET ghr ok"
             go get github.com/tcnksm/ghr
+            echo " EXEC ghr ok"
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} v5.0 ./artifacts/
             echo " ghr TEST ok "
             ls ./artifacts/
