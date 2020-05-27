@@ -35,9 +35,6 @@ jobs:
       - run:
           name: "Publish Release on GitHub"
           command: |
-            go version
-            echo " STEP1 GET ghr ok"
-            go get github.com/tcnksm/ghr
             echo " STEP2 EXEC ls " 
             FILE_LIST=`ls ./artifacts/`
             echo " STEP3 FILE: $FILE_LIST " 
