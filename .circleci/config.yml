@@ -22,7 +22,7 @@ jobs:
            cp -a util_lbt_test ./output/
            cp -a util_tx_continuous ./output/
            cp -a util_spectral_scan ./output/
-
+           cp -a ./output ./artifacts
       - store_artifacts:
           path: /home/circleci/project/output
 
