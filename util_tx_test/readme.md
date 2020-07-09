@@ -67,9 +67,10 @@ util_tx_test -h
  --lbt-sctm         <uint>  lbt scan time in usec to be applied to all channels [128, 5000]
  --lbt-rssi         <int>   lbt rssi target in dBm [-128..0]
  --lbt-rssi-offset  <int>   rssi offset in dB to be applied to SX127x RSSI [-128..127]
-'''   
-   
-'''   
+```  
+for Example   
+
+```  
 util_tx_test -r 1257 -f 866.5 --lbt-freq 866.5
 util_tx_test -r 1257 -f 866.5 -k 0 -m LORA
   
