@@ -43,7 +43,7 @@ The payload content is:
 All LoRa data is scrambled and whitened, so the padding has no influence
 whatsoever on the packet error rate.
 
-'''   
+```   
 util_tx_test -h
  -h                 print this help
  -r         <int>   radio type (SX1255:1255, SX1257:1257)
@@ -78,7 +78,7 @@ util_tx_test -r 1257 -f 915 --lbt-freq 915 -m LORA
 
 util_tx_test -r 1257 -f 923.3  -m LORA
 util_tx_test -r 1257 -f 923.3 --lbt-freq 915 -m LORA
-'''
+```   
 
 4. License
 -----------
