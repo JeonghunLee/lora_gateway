@@ -43,6 +43,43 @@ The payload content is:
 All LoRa data is scrambled and whitened, so the padding has no influence
 whatsoever on the packet error rate.
 
+'''
+util_tx_test -h
+ -h                 print this help
+ -r         <int>   radio type (SX1255:1255, SX1257:1257)
+ -n         <uint>  TX notch filter frequency in kHz [126..250]
+ -f         <float> target frequency in MHz
+ -k         <uint>  concentrator clock source (0:Radio A, 1:Radio B)
+ -m         <str>   modulation type ['LORA', 'FSK']
+ -b         <uint>  LoRa bandwidth in kHz [125, 250, 500]
+ -s         <uint>  LoRa Spreading Factor [7-12]
+ -c         <uint>  LoRa Coding Rate [1-4]
+ -d         <uint>  FSK frequency deviation in kHz [1:250]
+ -q         <float> FSK bitrate in kbps [0.5:250]
+ -p         <int>   RF power (dBm) [ 0dBm 10dBm 14dBm 20dBm 27dBm ]
+ -l         <uint>  LoRa preamble length (symbols)
+ -z         <uint>  payload size (bytes, <256)
+ -i                 send packet using inverted modulation polarity
+ -t         <uint>  pause between packets (ms)
+ -x         <int>   nb of times the sequence is repeated (-1 loop until stopped)
+ --lbt-freq         <float> lbt first channel frequency in MHz
+ --lbt-nbch         <uint>  lbt number of channels [1..8]
+ --lbt-sctm         <uint>  lbt scan time in usec to be applied to all channels [128, 5000]
+ --lbt-rssi         <int>   lbt rssi target in dBm [-128..0]
+ --lbt-rssi-offset  <int>   rssi offset in dB to be applied to SX127x RSSI [-128..127]
+'''
+   
+'''   
+util_tx_test -r 1257 -f 866.5 --lbt-freq 866.5
+util_tx_test -r 1257 -f 866.5 -k 0 -m LORA
+  
+util_tx_test -r 1257 -f 915  -m LORA
+util_tx_test -r 1257 -f 915 --lbt-freq 915 -m LORA
+
+util_tx_test -r 1257 -f 923.3  -m LORA
+util_tx_test -r 1257 -f 923.3 --lbt-freq 915 -m LORA
+'''
+
 4. License
 -----------
 
