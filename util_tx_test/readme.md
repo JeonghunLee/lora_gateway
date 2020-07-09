@@ -43,7 +43,7 @@ The payload content is:
 All LoRa data is scrambled and whitened, so the padding has no influence
 whatsoever on the packet error rate.
 
-'''
+'''   
 util_tx_test -h
  -h                 print this help
  -r         <int>   radio type (SX1255:1255, SX1257:1257)
@@ -67,7 +67,7 @@ util_tx_test -h
  --lbt-sctm         <uint>  lbt scan time in usec to be applied to all channels [128, 5000]
  --lbt-rssi         <int>   lbt rssi target in dBm [-128..0]
  --lbt-rssi-offset  <int>   rssi offset in dB to be applied to SX127x RSSI [-128..127]
-'''
+'''   
    
 '''   
 util_tx_test -r 1257 -f 866.5 --lbt-freq 866.5
